@@ -5,8 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoList</title>
+
+    <script src="https://kit.fontawesome.com/03ad30190e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&family=Open+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="header">
+            <h2>ToDoList</h2>
+            <input class="toDoInput"type="text" placeholder="Type your task">
+            <button class="addBtn">Add</button>
+        </div>
+        <div class="listContainer">
+            <h3>Your tasks:</h3>
+            <p>Add your first task!</p>
+
+            <ul>
+                <li id="test"> coś tam1
+                    <div class="tools">
+                        <button class="complete"><i class="fa-solid fa-check"></i></button>
+                        <button class="edit">edit</button>
+                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </li>
+                <li id="test"> coś tam2
+                    <div class="tools">
+                        <button class="complete"><i class="fa-solid fa-check"></i></button>
+                        <button class="edit">edit</button>
+                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </li>
+                <li id="test"> coś tam3
+                    <div class="tools">
+                        <button class="complete"><i class="fa-solid fa-check"></i></button>
+                        <button class="edit">edit</button>
+                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="popUpEditTask">
+        <p class="popUpAlert"></p>
+        <input class="popUpInput" type="text" placeholder="type name of your task">
+        <button class="popUpBtn confirm">Confirm</button>
+        <button class="popUpBtn cancel">Cancel</button>
+    </div>
+
+
 </body>
 </html>
