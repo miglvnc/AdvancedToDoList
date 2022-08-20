@@ -8,6 +8,7 @@
 
     <script src="https://kit.fontawesome.com/03ad30190e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (min-width: 560px)" href="mediumStyle.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,29 +24,69 @@
             <button class="addBtn">Add</button>
         </div>
         <div class="listContainer">
-            <h3>Your tasks:</h3>
+            <div class="optionsWrapper">
+                <div class="sortWrapper options">
+                    <h4>Sort by:</h4>
+                    <button class="sortByTime">Time Left</button>
+                    <button class="sortByName">Name</button>
+                    <button class="sortByStatus">Status</button>
+                </div>
+                <div class="filterWrapper options">
+                    <h4>Show only:</h4>
+                    <button class="onlyDone">Finished</button>
+                    <button class="onlyActive">Current</button>
+                </div>
+            </div>
+            <h2>Your tasks:</h2>
             <p>Add your first task!</p>
 
             <ul>
-                <li id="test"> coś tam1
-                    <div class="tools">
-                        <button class="complete"><i class="fa-solid fa-check"></i></button>
-                        <button class="edit">edit</button>
-                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                <li id="test">
+                    <div class="date">
+                        <span class="deadline">13:00, 24/08</span>
+                        <span class="timeLeft"> 2dni, 13h, 34min</span>
+                    </div>
+                    <div class="taskWrapper">
+                        <span class="task">
+                            typowe zadanie trzy wyrazy
+                        </span>
+                        <div class="tools">
+                            <button class="complete"><i class="fa-solid fa-check"></i></button>
+                            <button class="edit">edit</button>
+                            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
                     </div>
                 </li>
-                <li id="test"> coś tam2
-                    <div class="tools">
-                        <button class="complete"><i class="fa-solid fa-check"></i></button>
-                        <button class="edit">edit</button>
-                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                <li id="test">
+                    <div class="date">
+                        <span class="deadline">13:00, 24/08</span>
+                        <span class="timeLeft"> 999dni, 13h, 34min</span>
+                    </div>
+                    <div class="taskWrapper">
+                        <span class="task">
+                            krótkie
+                        </span>
+                        <div class="tools">
+                            <button class="complete"><i class="fa-solid fa-check"></i></button>
+                            <button class="edit">edit</button>
+                            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
                     </div>
                 </li>
-                <li id="test"> coś tam3
-                    <div class="tools">
-                        <button class="complete"><i class="fa-solid fa-check"></i></button>
-                        <button class="edit">edit</button>
-                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                <li id="test">
+                    <div class="date">
+                        <span class="deadline">13:00, 24/08</span>
+                        <span class="timeLeft"> 2dni, 13h, 34min</span>
+                    </div>
+                    <div class="taskWrapper">
+                        <span class="task">
+                            długie bardzo zadanie na co najmniej dwie linijki
+                        </span>
+                        <div class="tools">
+                            <button class="complete"><i class="fa-solid fa-check"></i></button>
+                            <button class="edit">edit</button>
+                            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -53,11 +94,25 @@
     </div>
 
 
-    <div class="popUpEditTask">
-        <p class="popUpAlert"></p>
-        <input class="popUpInput" type="text" placeholder="type name of your task">
-        <button class="popUpBtn confirm">Confirm</button>
-        <button class="popUpBtn cancel">Cancel</button>
+    <div class="popUp popUpEditTask">
+        <p class="popUpAlert">Edit your task</p>
+        <input class="popUpInput" type="text" placeholder="rename your task">
+        <div class="popUpBtnWrapper">
+            <button class="popUpBtn confirm">Confirm</button>
+            <button class="popUpBtn cancel">Cancel</button>
+        </div>
+    </div>
+    <div class="popUp popUpTools">
+        <p class="popUpAlert">Edit your task</p>
+        <div class="tools">
+            <button class="complete"><i class="fa-solid fa-check"></i></button>
+            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+        <input class="popUpInput" type="text" placeholder="rename your task">
+        <div class="popUpBtnWrapper">
+            <button class="popUpBtn confirm">Confirm</button>
+            <button class="popUpBtn cancel">Cancel</button>
+        </div>
     </div>
 
 

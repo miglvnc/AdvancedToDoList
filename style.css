@@ -19,18 +19,22 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 150px;
+  margin: 5% 10px 5% 10px;
   background-color: #f1e7e7;
   font-family: 'Open Sans', sans-serif;
 }
 
 .wrapper {
-  width: 600px;
   text-align: center;
   background-color: whitesmoke;
   -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
           box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
+}
+
+.wrapperBlur {
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
 }
 
 .header {
@@ -48,6 +52,7 @@ body {
 }
 
 .header .toDoInput {
+  min-width: 230px;
   width: 70%;
   height: 40px;
   font-size: 18px;
@@ -63,6 +68,7 @@ body {
 
 .header .addBtn {
   padding: 10px 15px;
+  margin: 10px;
   border-radius: 10px;
   border: 1px solid #b18989;
   font-weight: bold;
@@ -72,10 +78,8 @@ body {
   background-color: #f1e7e7;
   text-transform: uppercase;
   cursor: pointer;
-  -webkit-transition: background-color 0.3s, color 0.3s, -webkit-transform 0.3s;
-  transition: background-color 0.3s, color 0.3s, -webkit-transform 0.3s;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .header .addBtn:hover {
@@ -84,11 +88,68 @@ body {
 }
 
 .listContainer {
-  padding: 30px;
+  padding: 20px;
   margin: 0 0 15px 0;
 }
 
-.listContainer h3 {
+.listContainer .optionsWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.listContainer .optionsWrapper .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+}
+
+.listContainer .optionsWrapper .options h4 {
+  padding: 0 0 10px 0;
+}
+
+.listContainer .optionsWrapper .options button {
+  padding: 8px;
+  margin: 5px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #e7dede;
+  color: #b18989;
+  -webkit-transition: background-color 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
+  transition: background-color 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
+}
+
+.listContainer .optionsWrapper .options button:hover {
+  background-color: #b18989;
+  color: #e7dede;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transform: translate(-2px, -5%);
+          transform: translate(-2px, -5%);
+}
+
+.listContainer .optionsWrapper .options .btnActive {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+  -webkit-box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.listContainer h2 {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -102,28 +163,67 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  padding: 10px 15px;
+  margin: 20px 0px;
+  border-radius: 5px;
+  background-color: #f1e7e7;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.listContainer .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 5px 0;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #e6d6d6;
+}
+
+.listContainer .date span {
+  font-size: 12px;
+  color: #2c87d1;
+  padding: 5px 10px;
+}
+
+.listContainer .taskWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  list-style: none;
-  padding: 10px 15px;
-  margin: 20px;
-  text-shadow: 3px 3px 3px rgba(70, 69, 69, 0.4);
+  text-align: left;
+}
+
+.listContainer .taskWrapper .task {
+  padding: 10px;
+  font-size: 20px;
   letter-spacing: 1px;
-  border-radius: 5px;
-  background-color: #f1e7e7;
+  text-shadow: 2px 2px 2px rgba(143, 143, 143, 0.6);
 }
 
-.listContainer .tools {
+.listContainer .taskWrapper .tools {
   display: inline-block;
+  display: none;
 }
 
-.listContainer .tools button {
-  padding: 10px 15px;
-  margin: 0 5px;
+.listContainer .taskWrapper .tools button {
+  padding: 5px 5px;
+  margin: 0 3px;
   border: none;
   border-radius: 5px;
   text-transform: uppercase;
@@ -135,7 +235,7 @@ body {
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
 }
 
-.listContainer .tools button:hover {
+.listContainer .taskWrapper .tools button:hover {
   background-color: #e7dede;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
@@ -143,15 +243,135 @@ body {
           transform: translate(-2px, -5%);
 }
 
-.listContainer .tools .complete {
+.listContainer .taskWrapper .tools .complete {
   color: royalblue;
 }
 
-.listContainer .tools .edit {
+.listContainer .taskWrapper .tools .edit {
   color: #b18989;
 }
 
-.listContainer .tools .delete {
+.listContainer .taskWrapper .tools .delete {
   color: #c95f5f;
+}
+
+.popUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  bottom: 20px;
+  width: 90%;
+  max-width: 500px;
+  height: 250px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c97575), to(#ddb3b3));
+  background: linear-gradient(180deg, #c97575 0%, #ddb3b3 100%);
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+}
+
+.popUp p {
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 2px;
+  color: whitesmoke;
+  text-shadow: 2px 2px 2px black;
+  font-size: 26px;
+  background-color: #c97575;
+  border-radius: 10px 10px 0 0;
+}
+
+.popUp .popUpInput {
+  min-width: 230px;
+  width: 70%;
+  height: 40px;
+  font-size: 18px;
+  border: 2px solid #ddb3b34f;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 0 20px 0;
+  background-color: #f1e7e7;
+}
+
+.popUp .popUpBtnWrapper .popUpBtn {
+  padding: 10px;
+  margin: 5px;
+  font-size: 12px;
+  border-radius: 10px;
+  border: 1px solid #b18989;
+  font-weight: bold;
+  color: #311414;
+  background-color: #f1e7e7;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, color 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: background-color 0.3s, color 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
+}
+
+.popUp .popUpBtnWrapper .popUpBtn:hover {
+  background-color: #b18989;
+  color: #f1e7e7;
+}
+
+.popUp .tools {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.popUp .tools button {
+  padding: 10px 15px;
+  margin: 0px 5px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: none;
+  -webkit-transition: background-color 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
+  transition: background-color 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
+}
+
+.popUp .tools button i {
+  font-size: 25px;
+}
+
+.popUp .tools button:hover {
+  background-color: #f1e7e7;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transform: translate(-2px, -5%);
+          transform: translate(-2px, -5%);
+}
+
+.popUp .complete {
+  color: royalblue;
+}
+
+.popUp .delete {
+  color: #c95f5f;
+}
+
+.popUpEditTask {
+  height: 200px;
+  display: none;
+}
+
+.popUpTools {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

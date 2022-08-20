@@ -1,0 +1,2 @@
+1. ddl i time remaining nad kartą zadania
+2. width <560px schowane toolsy, popup po kliknieciu 

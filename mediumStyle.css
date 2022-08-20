@@ -1,0 +1,40 @@
+.wrapper {
+  min-width: 500px;
+}
+
+.wrapper .listContainer {
+  padding: 30px;
+}
+
+.wrapper .listContainer .date span {
+  font-size: 16px;
+}
+
+.wrapper .listContainer .optionsWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+
+.wrapper .listContainer .optionsWrapper .options {
+  display: inline-block;
+}
+
+.wrapper .listContainer .taskWrapper .task {
+  width: 65%;
+  text-align: left;
+}
+
+.wrapper .listContainer .taskWrapper .tools {
+  display: inline-block;
+}
+
+.wrapper .listContainer .taskWrapper .tools button {
+  padding: 10px;
+  margin: 0 5px;
+}
+/*# sourceMappingURL=mediumStyle.css.map */
