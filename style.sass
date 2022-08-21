@@ -12,8 +12,8 @@ body
     display: flex
     flex-direction: column
     justify-content: center
+    margin: 5% 10px 5% 10px !important
     align-items: center
-    margin: 5% 10px 5% 10px
     background-color: $light-color
     font-family: 'Open Sans', sans-serif
 
@@ -34,12 +34,14 @@ body
     h2
         color: whitesmoke
         text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8)
-        letter-spacing: 2px
+        letter-spacing: 3px
         padding: 10px 15px
         font-size: 28px
+        text-transform: uppercase
 
-    .toDoInput
+    .toDoInput, .dateInput
         min-width: 230px
+        margin: 10px
         width: 70%
         height: 40px
         font-size: 18px
@@ -50,6 +52,10 @@ body
         margin-right: 10px
         padding: 10px
         background-color: $light-color
+
+    .dateInput
+        max-width: 250px
+        margin: auto
 
     .addBtn
         padding: 10px 15px
@@ -115,6 +121,10 @@ body
         letter-spacing: 1px
         padding: 20px
 
+    ul
+        margin: 0
+        padding: 0
+
     li
         display: flex
         flex-direction: column
@@ -135,7 +145,8 @@ body
 
         span
             font-size: 12px
-            color: #2c87d1
+            // color: #2c87d1
+            color: #7a7a7a
             padding: 5px 10px
 
     .taskWrapper
@@ -184,7 +195,7 @@ body
     bottom: 20px
     width: 90%
     max-width: 500px
-    height: 250px
+    height: 330px
     background: linear-gradient(180deg, #c97575 0%, #ddb3b3 100%)
     border-radius: 10px
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6)
@@ -212,10 +223,11 @@ body
         border-radius: 10px
         // margin-right: 10px
         padding: 10px
-        margin: 20px 0 20px 0
+        margin: 10px 0 10px 0
         background-color: $light-color
 
     .popUpBtnWrapper
+        margin: 10px 0 0 0
 
         .popUpBtn
             padding: 10px
@@ -263,7 +275,7 @@ body
         color: $red-color
 
 .popUpEditTask
-    height: 200px
+    height: 270px
     display: none
 .popUpTools
     display: none

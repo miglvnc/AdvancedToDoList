@@ -16,10 +16,10 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 5% 10px 5% 10px !important;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 5% 10px 5% 10px;
   background-color: #f1e7e7;
   font-family: 'Open Sans', sans-serif;
 }
@@ -46,13 +46,15 @@ body {
 .header h2 {
   color: whitesmoke;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   padding: 10px 15px;
   font-size: 28px;
+  text-transform: uppercase;
 }
 
-.header .toDoInput {
+.header .toDoInput, .header .dateInput {
   min-width: 230px;
+  margin: 10px;
   width: 70%;
   height: 40px;
   font-size: 18px;
@@ -64,6 +66,11 @@ body {
   margin-right: 10px;
   padding: 10px;
   background-color: #f1e7e7;
+}
+
+.header .dateInput {
+  max-width: 250px;
+  margin: auto;
 }
 
 .header .addBtn {
@@ -159,6 +166,11 @@ body {
   padding: 20px;
 }
 
+.listContainer ul {
+  margin: 0;
+  padding: 0;
+}
+
 .listContainer li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -192,7 +204,7 @@ body {
 
 .listContainer .date span {
   font-size: 12px;
-  color: #2c87d1;
+  color: #7a7a7a;
   padding: 5px 10px;
 }
 
@@ -270,7 +282,7 @@ body {
   bottom: 20px;
   width: 90%;
   max-width: 500px;
-  height: 250px;
+  height: 330px;
   background: -webkit-gradient(linear, left top, left bottom, from(#c97575), to(#ddb3b3));
   background: linear-gradient(180deg, #c97575 0%, #ddb3b3 100%);
   border-radius: 10px;
@@ -301,8 +313,12 @@ body {
   outline: none;
   border-radius: 10px;
   padding: 10px;
-  margin: 20px 0 20px 0;
+  margin: 10px 0 10px 0;
   background-color: #f1e7e7;
+}
+
+.popUp .popUpBtnWrapper {
+  margin: 10px 0 0 0;
 }
 
 .popUp .popUpBtnWrapper .popUpBtn {
@@ -367,7 +383,7 @@ body {
 }
 
 .popUpEditTask {
-  height: 200px;
+  height: 270px;
   display: none;
 }
 

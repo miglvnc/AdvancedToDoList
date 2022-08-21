@@ -10,16 +10,25 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" media="screen and (min-width: 560px)" href="mediumStyle.css">
 
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&family=Open+Sans:wght@400;700&display=swap"
-        rel="stylesheet">
+    rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 </head>
 <body>
     <div class="wrapper">
         <div class="header">
-            <h2>ToDoList</h2>
+            <h2>ToDo List</h2>
+            <form>
+                <input class="form-control dateInput" type="datetime" name="datetime" id="datetime" placeholder="Deadline of your task">
+            </form>
             <input class="toDoInput"type="text" placeholder="Type your task">
             <button class="addBtn">Add</button>
         </div>
@@ -38,13 +47,13 @@
                 </div>
             </div>
             <h2>Your tasks:</h2>
-            <p>Add your first task!</p>
+            <p class="alertInfo">Add your first task!</p>
 
             <ul>
-                <li id="test">
+                <li class="taskContainer" id="taskSample">
                     <div class="date">
-                        <span class="deadline">13:00, 24/08</span>
-                        <span class="timeLeft"> 2dni, 13h, 34min</span>
+                        <span class="deadline">Sun, 28 Aug 2022 17:37</span>
+                        <span class="timeleft">Time left</span>
                     </div>
                     <div class="taskWrapper">
                         <span class="task">
@@ -57,7 +66,7 @@
                         </div>
                     </div>
                 </li>
-                <li id="test">
+                <!-- <li id="test">
                     <div class="date">
                         <span class="deadline">13:00, 24/08</span>
                         <span class="timeLeft"> 999dni, 13h, 34min</span>
@@ -88,7 +97,7 @@
                             <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
@@ -96,7 +105,11 @@
 
     <div class="popUp popUpEditTask">
         <p class="popUpAlert">Edit your task</p>
-        <input class="popUpInput" type="text" placeholder="rename your task">
+        <form>
+            <input class="form-control dateInput popUpInput" type="datetime" name="datetime" id="datetime"
+                            placeholder="Deadline change">
+        </form>
+        <input class="popUpInput" type="text" placeholder="Rename your task">
         <div class="popUpBtnWrapper">
             <button class="popUpBtn confirm">Confirm</button>
             <button class="popUpBtn cancel">Cancel</button>
@@ -108,6 +121,10 @@
             <button class="complete"><i class="fa-solid fa-check"></i></button>
             <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
         </div>
+            <form>
+                <input class="form-control dateInput popUpInput" type="datetime" name="datetime" id="datetime"
+                        placeholder="Deadline change">
+            </form>
         <input class="popUpInput" type="text" placeholder="rename your task">
         <div class="popUpBtnWrapper">
             <button class="popUpBtn confirm">Confirm</button>
@@ -115,6 +132,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
