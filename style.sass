@@ -17,14 +17,14 @@ body
     background-color: $light-color
     font-family: 'Open Sans', sans-serif
 
+    .hideDateInput
+        display: none
+
 .wrapper
     text-align: center
     background-color: whitesmoke
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4)
     border-radius: 5px
-
-.wrapperBlur
-    filter: blur(2px)
 
 .header
     padding: 40px 30px 50px 30px
@@ -133,7 +133,21 @@ body
         margin: 20px 0px
         border-radius: 5px
         background-color: $light-color
+        // background-color: #e6f0dc
         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4)
+        transition: background-color 0.3s
+
+        input
+            border: none
+            background: none
+            outline: none
+
+    #taskSample
+        display: none
+
+    .taskDone
+        background-color: #e6f0dc
+
 
     .date
         display: flex
@@ -142,32 +156,69 @@ body
         width: 100%
         border-radius: 5px
         background-color: #e6d6d6
+        transition: background-color 0.4s
+        // background-color: #effae3
 
         span
             font-size: 12px
-            // color: #2c87d1
             color: #7a7a7a
             padding: 5px 10px
 
+        .hideDeadline
+            display: none
+
+        .dateInput
+            font-size: 16px
+            padding: 5px 0 5px 5px
+
+
+        .exceeded
+            color: #e21717
+
+        .taskDoneDate
+            color: #2e923f
+
+        .hourLeft
+            color: #e08926
+
+    .dateTaskDone
+        background-color: #effae3
+
     .taskWrapper
         display: flex
+        flex-direction: column
         justify-content: space-between
         align-items: center
         text-align: left
 
         .task
-            padding: 10px
+            margin: 10px 2px
+            padding: 7px
+            text-align: center
             font-size: 20px
             letter-spacing: 1px
             text-shadow: 2px 2px 2px rgba(143, 143, 143, 0.6)
+            overflow-wrap: break-word
+            background: none
+            border: none
+            border-radius: 10px
+            transition: background-color 0.3s
+
+        .task:focus
+            outline: none
+
+        .editActive
+            background-color: #fcfafa
 
         .tools
-            display: inline-block
-            display: none
+            display: flex
+            justify-content: space-between
+            // display: none
 
             button
-                padding: 5px 5px
-                margin: 0 3px
+                padding: 10px
+                margin: 0 5px
+                // max-width: 52px
                 border: none
                 border-radius: 5px
                 text-transform: uppercase
@@ -184,98 +235,11 @@ body
                 color: royalblue
             .edit
                 color: $dark-color
-            .delete
+            .remove
                 color: $red-color
 
-.popUp
-    display: flex
-    flex-direction: column
-    align-items: center
-    position: fixed
-    bottom: 20px
-    width: 90%
-    max-width: 500px
-    height: 330px
-    background: linear-gradient(180deg, #c97575 0%, #ddb3b3 100%)
-    border-radius: 10px
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6)
+            .btnBackground:hover
+                background-color: #effae3
 
-    p
-        padding: 10px
-        // margin-bottom: 10px
-        width: 100%
-        text-align: center
-        letter-spacing: 2px
-        color: whitesmoke
-        text-shadow: 2px 2px 2px black
-        font-size: 26px
-        background-color: #c97575
-        border-radius: 10px 10px 0 0
-
-    .popUpInput
-        min-width: 230px
-        width: 70%
-        height: 40px
-        font-size: 18px
-        border: 2px solid #ddb3b34f
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4)
-        outline: none
-        border-radius: 10px
-        // margin-right: 10px
-        padding: 10px
-        margin: 10px 0 10px 0
-        background-color: $light-color
-
-    .popUpBtnWrapper
-        margin: 10px 0 0 0
-
-        .popUpBtn
-            padding: 10px
-            margin: 5px
-            font-size: 12px
-            border-radius: 10px
-            border: 1px solid $dark-color
-            font-weight: bold
-            color: #311414
-            // box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4)
-            background-color: $light-color
-            text-transform: uppercase
-            cursor: pointer
-            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s
-
-        .popUpBtn:hover
-            background-color: $dark-color
-            color: $light-color
-
-    .tools
-        display: inline-block
-        margin-top: 10px
-
-        button
-            padding: 10px 15px
-            margin: 0px 5px
-            border: none
-            border-radius: 5px
-            text-transform: uppercase
-            cursor: pointer
-            background: none
-            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s
-
-            i
-                font-size: 25px
-
-        button:hover
-            background-color: $light-color
-            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4)
-            transform: translate(-2px, -5%)
-
-    .complete
-        color: royalblue
-    .delete
-        color: $red-color
-
-.popUpEditTask
-    height: 270px
-    display: none
-.popUpTools
-    display: none
+            .btnHide
+                display: none

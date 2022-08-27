@@ -53,82 +53,21 @@
                 <li class="taskContainer" id="taskSample">
                     <div class="date">
                         <span class="deadline">Sun, 28 Aug 2022 17:37</span>
+                        <form>
+                            <input class="form-control dateInput hideDateInput" type="datetime" name="datetime" placeholder="Edit deadline">
+                        </form>
                         <span class="timeleft">Time left</span>
                     </div>
                     <div class="taskWrapper">
-                        <span class="task">
-                            typowe zadanie trzy wyrazy
-                        </span>
+                        <input type="text" class="task" readonly value="typowe zadanie trzy wyrazy" placeholder="Empty task...">
                         <div class="tools">
                             <button class="complete"><i class="fa-solid fa-check"></i></button>
                             <button class="edit">edit</button>
-                            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                            <button class="remove"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
                 </li>
-                <!-- <li id="test">
-                    <div class="date">
-                        <span class="deadline">13:00, 24/08</span>
-                        <span class="timeLeft"> 999dni, 13h, 34min</span>
-                    </div>
-                    <div class="taskWrapper">
-                        <span class="task">
-                            krótkie
-                        </span>
-                        <div class="tools">
-                            <button class="complete"><i class="fa-solid fa-check"></i></button>
-                            <button class="edit">edit</button>
-                            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </div>
-                </li>
-                <li id="test">
-                    <div class="date">
-                        <span class="deadline">13:00, 24/08</span>
-                        <span class="timeLeft"> 2dni, 13h, 34min</span>
-                    </div>
-                    <div class="taskWrapper">
-                        <span class="task">
-                            długie bardzo zadanie na co najmniej dwie linijki
-                        </span>
-                        <div class="tools">
-                            <button class="complete"><i class="fa-solid fa-check"></i></button>
-                            <button class="edit">edit</button>
-                            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </div>
-                </li> -->
             </ul>
-        </div>
-    </div>
-
-
-    <div class="popUp popUpEditTask">
-        <p class="popUpAlert">Edit your task</p>
-        <form>
-            <input class="form-control dateInput popUpInput" type="datetime" name="datetime" id="datetime"
-                            placeholder="Deadline change">
-        </form>
-        <input class="popUpInput" type="text" placeholder="Rename your task">
-        <div class="popUpBtnWrapper">
-            <button class="popUpBtn confirm">Confirm</button>
-            <button class="popUpBtn cancel">Cancel</button>
-        </div>
-    </div>
-    <div class="popUp popUpTools">
-        <p class="popUpAlert">Edit your task</p>
-        <div class="tools">
-            <button class="complete"><i class="fa-solid fa-check"></i></button>
-            <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-        </div>
-            <form>
-                <input class="form-control dateInput popUpInput" type="datetime" name="datetime" id="datetime"
-                        placeholder="Deadline change">
-            </form>
-        <input class="popUpInput" type="text" placeholder="rename your task">
-        <div class="popUpBtnWrapper">
-            <button class="popUpBtn confirm">Confirm</button>
-            <button class="popUpBtn cancel">Cancel</button>
         </div>
     </div>
 

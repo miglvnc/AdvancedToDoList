@@ -24,8 +24,15 @@
   display: inline-block;
 }
 
+.wrapper .listContainer .taskWrapper {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .wrapper .listContainer .taskWrapper .task {
-  width: 65%;
+  width: 63%;
   text-align: left;
 }
 

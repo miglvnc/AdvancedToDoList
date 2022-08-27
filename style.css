@@ -24,6 +24,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+body .hideDateInput {
+  display: none;
+}
+
 .wrapper {
   text-align: center;
   background-color: whitesmoke;
@@ -186,6 +190,22 @@ body {
   background-color: #f1e7e7;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.listContainer li input {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.listContainer #taskSample {
+  display: none;
+}
+
+.listContainer .taskDone {
+  background-color: #e6f0dc;
 }
 
 .listContainer .date {
@@ -200,6 +220,8 @@ body {
   width: 100%;
   border-radius: 5px;
   background-color: #e6d6d6;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
 }
 
 .listContainer .date span {
@@ -208,10 +230,39 @@ body {
   padding: 5px 10px;
 }
 
+.listContainer .date .hideDeadline {
+  display: none;
+}
+
+.listContainer .date .dateInput {
+  font-size: 16px;
+  padding: 5px 0 5px 5px;
+}
+
+.listContainer .date .exceeded {
+  color: #e21717;
+}
+
+.listContainer .date .taskDoneDate {
+  color: #2e923f;
+}
+
+.listContainer .date .hourLeft {
+  color: #e08926;
+}
+
+.listContainer .dateTaskDone {
+  background-color: #effae3;
+}
+
 .listContainer .taskWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -222,20 +273,40 @@ body {
 }
 
 .listContainer .taskWrapper .task {
-  padding: 10px;
+  margin: 10px 2px;
+  padding: 7px;
+  text-align: center;
   font-size: 20px;
   letter-spacing: 1px;
   text-shadow: 2px 2px 2px rgba(143, 143, 143, 0.6);
+  overflow-wrap: break-word;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.listContainer .taskWrapper .task:focus {
+  outline: none;
+}
+
+.listContainer .taskWrapper .editActive {
+  background-color: #fcfafa;
 }
 
 .listContainer .taskWrapper .tools {
-  display: inline-block;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .listContainer .taskWrapper .tools button {
-  padding: 5px 5px;
-  margin: 0 3px;
+  padding: 10px;
+  margin: 0 5px;
   border: none;
   border-radius: 5px;
   text-transform: uppercase;
@@ -263,131 +334,15 @@ body {
   color: #b18989;
 }
 
-.listContainer .taskWrapper .tools .delete {
+.listContainer .taskWrapper .tools .remove {
   color: #c95f5f;
 }
 
-.popUp {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: fixed;
-  bottom: 20px;
-  width: 90%;
-  max-width: 500px;
-  height: 330px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#c97575), to(#ddb3b3));
-  background: linear-gradient(180deg, #c97575 0%, #ddb3b3 100%);
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+.listContainer .taskWrapper .tools .btnBackground:hover {
+  background-color: #effae3;
 }
 
-.popUp p {
-  padding: 10px;
-  width: 100%;
-  text-align: center;
-  letter-spacing: 2px;
-  color: whitesmoke;
-  text-shadow: 2px 2px 2px black;
-  font-size: 26px;
-  background-color: #c97575;
-  border-radius: 10px 10px 0 0;
-}
-
-.popUp .popUpInput {
-  min-width: 230px;
-  width: 70%;
-  height: 40px;
-  font-size: 18px;
-  border: 2px solid #ddb3b34f;
-  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-  outline: none;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px 0 10px 0;
-  background-color: #f1e7e7;
-}
-
-.popUp .popUpBtnWrapper {
-  margin: 10px 0 0 0;
-}
-
-.popUp .popUpBtnWrapper .popUpBtn {
-  padding: 10px;
-  margin: 5px;
-  font-size: 12px;
-  border-radius: 10px;
-  border: 1px solid #b18989;
-  font-weight: bold;
-  color: #311414;
-  background-color: #f1e7e7;
-  text-transform: uppercase;
-  cursor: pointer;
-  -webkit-transition: background-color 0.3s, color 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
-  transition: background-color 0.3s, color 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
-}
-
-.popUp .popUpBtnWrapper .popUpBtn:hover {
-  background-color: #b18989;
-  color: #f1e7e7;
-}
-
-.popUp .tools {
-  display: inline-block;
-  margin-top: 10px;
-}
-
-.popUp .tools button {
-  padding: 10px 15px;
-  margin: 0px 5px;
-  border: none;
-  border-radius: 5px;
-  text-transform: uppercase;
-  cursor: pointer;
-  background: none;
-  -webkit-transition: background-color 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
-  transition: background-color 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
-  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
-  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
-}
-
-.popUp .tools button i {
-  font-size: 25px;
-}
-
-.popUp .tools button:hover {
-  background-color: #f1e7e7;
-  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
-  -webkit-transform: translate(-2px, -5%);
-          transform: translate(-2px, -5%);
-}
-
-.popUp .complete {
-  color: royalblue;
-}
-
-.popUp .delete {
-  color: #c95f5f;
-}
-
-.popUpEditTask {
-  height: 270px;
-  display: none;
-}
-
-.popUpTools {
+.listContainer .taskWrapper .tools .btnHide {
   display: none;
 }
 /*# sourceMappingURL=style.css.map */
