@@ -7,7 +7,6 @@ const mainFunction = () => {
     btnsDisabledCheck();
     
     dateTimePicker();
-
 }
 
 function prepareDOMElements(){
@@ -51,7 +50,7 @@ function prepareDOMEvents(){
     $allTasksBtn.addEventListener('click', removeFilters);
 
     // $ulList.addEventListener('click', checkToolsClick)
-}
+};
 
 function tasksManipulate () {
     addNewTask();
@@ -69,6 +68,21 @@ function filterFinished(){
             task.classList.remove('taskFinishedFilter')
         }
     });
+
+    arrAllTasks = Array.from(allTasks);
+    arrAllTasks.pop(); // pop sample task
+    let checkAlertInfo = arrAllTasks.every(element => element.classList.contains('taskFinishedFilter'))
+
+    console.log(checkAlertInfo);
+
+    if (!checkAlertInfo) {
+        $alertInfo.style.display = "none";
+    } else {
+        $alertInfo.style.display = "inline-block";
+        $alertInfo.innerHTML = "All tasks are pending!"
+    }
+
+
 };
 
 function filterCurrent(){
@@ -78,12 +92,24 @@ function filterCurrent(){
     let allTasks = $listContainer.querySelectorAll('li');
     allTasks.forEach(task => {
         if (task.classList.contains('taskDone')) {
-            console.log(task);
             task.classList.add('taskFinishedFilter')
         } else if (!task.classList.contains('taskDone')) {
             task.classList.remove('taskFinishedFilter')
         }
     });
+
+    arrAllTasks = Array.from(allTasks);
+    arrAllTasks.pop(); // pop sample task
+    let checkAlertInfo = arrAllTasks.every(element => element.classList.contains('taskFinishedFilter'))
+
+    console.log(checkAlertInfo);
+
+    if (checkAlertInfo) {
+        $alertInfo.style.display = "inline-block";
+        $alertInfo.innerHTML = "All tasks are finished!"
+    } else {
+        $alertInfo.style.display = "none";
+    }
 };
 
 function removeFilters(){
@@ -95,7 +121,13 @@ function removeFilters(){
         console.log(task);
         task.classList.remove('taskFinishedFilter')
     });
+
+    if (allTasks.length > 1) {
+        $alertInfo.style.display = "none"
+    }
+
 };
+
 
 function btnsRemoveStyleClass(){
     $finishedTasksBtn.classList.remove('btnActive')
@@ -120,6 +152,15 @@ function btnsDisabledCheck() {
 
 };
 
+function alertInfoCheck() {
+    let allTasks = $listContainer.querySelectorAll('li');
+    console.log(allTasks.length);
+    if (allTasks.length <= 1){
+        $alertInfo.style.display = "inline-block";
+        $alertInfo.innerHTML = "Add your first task!";
+    }
+};
+
 function addNewTask () {
     if ($toDoInput.value !== "" && $dateInput.value !== "") {
         $alertInfo.style.display = "none"
@@ -142,7 +183,7 @@ function addNewTask () {
         timeCounter($newTaskContainer, $dateInput.value);
 
         //add task to list
-        $ulList.appendChild($newTaskContainer);
+        $ulList.prepend($newTaskContainer);
 
         //clear input
         $toDoInput.value = "";
@@ -177,11 +218,16 @@ function addNewTask () {
                 allBtns[i].classList.toggle('btnBackground')
             }
             
-
             if (taskContainer.querySelector('.timeleft').innerHTML !== "Done!") {
                 taskContainer.querySelector('.timeleft').innerHTML = "Done!";
             } else {
                 taskContainer.querySelector('.timeleft').innerHTML = "Counting...";
+            }
+
+            if ($finishedTasksBtn.classList.contains('btnActive')) {
+                filterFinished();
+            } else if ($currentTasksBtn.classList.contains('btnActive')) {
+                filterCurrent();
             }
         })
 
@@ -189,7 +235,10 @@ function addNewTask () {
 
             getThisContainers(this);
             taskContainer.remove();
+
             btnsDisabledCheck();
+
+            alertInfoCheck();
 
         })
 
@@ -291,10 +340,6 @@ function enterConfirm() {
     }
 };
 
-// sort
-
-//filter
-
 // date time picker
 const dateTimePicker = () => {
     dateTimeConfig = {
@@ -309,7 +354,7 @@ const dateTimePicker = () => {
     );
     // flatpickr(addNewTask, dateTimeConfig
     // );
-}
+};
 const dateTimePickerEdit = () => {
     dateTimeConfig = {
         enableTime: true,
@@ -323,13 +368,13 @@ const dateTimePickerEdit = () => {
     );
     // flatpickr(addNewTask, dateTimeConfig
     // );
-}
+};
 
 function getThisContainers(el){
     tools = el.parentElement;
     taskWrapper = tools.parentElement;
     taskContainer = taskWrapper.parentElement
-}
+};
 
 document.addEventListener("DOMContentLoaded", mainFunction)
 

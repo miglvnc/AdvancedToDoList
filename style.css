@@ -250,12 +250,12 @@ body .hideDateInput {
   padding: 5px 0 5px 5px;
 }
 
-.listContainer .date .hourLeft {
-  color: #e08926;
-}
-
 .listContainer .date .exceeded {
   color: #e21717;
+}
+
+.listContainer .date .hourLeft {
+  color: #e08926;
 }
 
 .listContainer .date .taskDoneDate {
