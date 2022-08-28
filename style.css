@@ -36,6 +36,10 @@ body .hideDateInput {
   border-radius: 5px;
 }
 
+.wrapper .taskSampleContainer {
+  display: none;
+}
+
 .header {
   padding: 40px 30px 50px 30px;
   border-radius: 5px 5px 0 0;

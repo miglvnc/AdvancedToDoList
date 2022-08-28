@@ -15,7 +15,7 @@ function prepareDOMElements(){
     $addNewTask = document.querySelector('.addBtn');
     $alertInfo = document.querySelector('.alertInfo');
     $listContainer = document.querySelector('.listContainer');
-    $defaultTask = $listContainer.querySelector('.taskContainer');
+    $defaultTask = document.querySelector('.taskContainer');
     $ulList = $listContainer.querySelector('ul');
 
     $completeBtn = document.querySelector('.complete')
@@ -33,11 +33,15 @@ function prepareDOMElements(){
     popUpTools = document.querySelector('.popUpEditTask');
     popUpEditSmallDev = document.querySelector('.popUpTools');
 
-    sortFilterBtns = document.querySelectorAll('.sortFilterBtn')
+    sortFilterBtns = document.querySelectorAll('.sortFilterBtn');
 
-    $finishedTasksBtn = document.querySelector('.onlyDone')
-    $currentTasksBtn = document.querySelector('.onlyActive')
-    $allTasksBtn = document.querySelector('.showAll')
+    $finishedTasksBtn = document.querySelector('.onlyDone');
+    $currentTasksBtn = document.querySelector('.onlyActive');
+    $allTasksBtn = document.querySelector('.showAll');
+
+    $sortByTime = document.querySelector('.sortByTime');
+    $sortByName = document.querySelector('.sortByName');
+    $sortByStatus = document.querySelector('.sortByStatus');
     
 }
 
@@ -48,6 +52,8 @@ function prepareDOMEvents(){
     $finishedTasksBtn.addEventListener('click', filterFinished);
     $currentTasksBtn.addEventListener('click', filterCurrent);
     $allTasksBtn.addEventListener('click', removeFilters);
+
+    // $sortByTime.addEventListener()
 
     // $ulList.addEventListener('click', checkToolsClick)
 };
@@ -70,7 +76,7 @@ function filterFinished(){
     });
 
     arrAllTasks = Array.from(allTasks);
-    arrAllTasks.pop(); // pop sample task
+    // arrAllTasks.pop(); // pop sample task
     let checkAlertInfo = arrAllTasks.every(element => element.classList.contains('taskFinishedFilter'))
 
     console.log(checkAlertInfo);
@@ -99,7 +105,7 @@ function filterCurrent(){
     });
 
     arrAllTasks = Array.from(allTasks);
-    arrAllTasks.pop(); // pop sample task
+    // arrAllTasks.pop(); // pop sample task
     let checkAlertInfo = arrAllTasks.every(element => element.classList.contains('taskFinishedFilter'))
 
     console.log(checkAlertInfo);
@@ -122,12 +128,11 @@ function removeFilters(){
         task.classList.remove('taskFinishedFilter')
     });
 
-    if (allTasks.length > 1) {
+    if (allTasks.length > 0) {
         $alertInfo.style.display = "none"
     }
 
 };
-
 
 function btnsRemoveStyleClass(){
     $finishedTasksBtn.classList.remove('btnActive')
@@ -137,7 +142,7 @@ function btnsRemoveStyleClass(){
 
 function btnsDisabledCheck() {
     let allTasks = $listContainer.querySelectorAll('li')
-    if (allTasks.length <= 1) {
+    if (allTasks.length <= 0) {
         sortFilterBtns.forEach(btn=> {
             btn.setAttribute('disabled', 'disabled')
             btn.style.cursor = "not-allowed"
@@ -152,14 +157,21 @@ function btnsDisabledCheck() {
 
 };
 
+function sortByName() {
+    let allTasks = $listContainer.querySelectorAll('li');
+    console.log(allTasks);
+}
+
+
 function alertInfoCheck() {
     let allTasks = $listContainer.querySelectorAll('li');
     console.log(allTasks.length);
-    if (allTasks.length <= 1){
+    if (allTasks.length <= 0){
         $alertInfo.style.display = "inline-block";
         $alertInfo.innerHTML = "Add your first task!";
     }
 };
+
 
 function addNewTask () {
     if ($toDoInput.value !== "" && $dateInput.value !== "") {
@@ -224,11 +236,7 @@ function addNewTask () {
                 taskContainer.querySelector('.timeleft').innerHTML = "Counting...";
             }
 
-            if ($finishedTasksBtn.classList.contains('btnActive')) {
-                filterFinished();
-            } else if ($currentTasksBtn.classList.contains('btnActive')) {
-                filterCurrent();
-            }
+            filterActiveActionCheck();
         })
 
         removeBtn.addEventListener('click', function(){
@@ -239,6 +247,8 @@ function addNewTask () {
             btnsDisabledCheck();
 
             alertInfoCheck();
+
+            filterActiveActionCheck();
 
         })
 
@@ -281,6 +291,8 @@ function addNewTask () {
                 }
             }
         })
+
+        filterActiveActionCheck();
 
         btnsDisabledCheck();
         
@@ -355,6 +367,7 @@ const dateTimePicker = () => {
     // flatpickr(addNewTask, dateTimeConfig
     // );
 };
+
 const dateTimePickerEdit = () => {
     dateTimeConfig = {
         enableTime: true,
@@ -374,6 +387,14 @@ function getThisContainers(el){
     tools = el.parentElement;
     taskWrapper = tools.parentElement;
     taskContainer = taskWrapper.parentElement
+};
+
+function filterActiveActionCheck(){
+    if ($finishedTasksBtn.classList.contains('btnActive')) {
+        filterFinished();
+    } else if ($currentTasksBtn.classList.contains('btnActive')) {
+        filterCurrent();
+    };
 };
 
 document.addEventListener("DOMContentLoaded", mainFunction)

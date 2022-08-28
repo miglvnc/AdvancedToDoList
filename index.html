@@ -32,6 +32,28 @@
             <input class="toDoInput"type="text" placeholder="Type your task">
             <button class="addBtn">Add</button>
         </div>
+        <div class="taskSampleContainer">
+                        <ul>
+                            <li class="taskContainer" id="taskSample">
+                                <div class="date">
+                                    <span class="deadline">Sun, 28 Aug 2022 17:37</span>
+                                    <form>
+                                        <input class="form-control dateInput hideDateInput" type="datetime" name="datetime"
+                                            placeholder="Edit deadline">
+                                    </form>
+                                    <span class="timeleft">Counting...</span>
+                                </div>
+                                <div class="taskWrapper">
+                                    <input type="text" class="task" readonly value="typowe zadanie trzy wyrazy" placeholder="Empty task...">
+                                    <div class="tools">
+                                        <button class="complete"><i class="fa-solid fa-check"></i></button>
+                                        <button class="edit">edit</button>
+                                        <button class="remove"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+        </div>
         <div class="listContainer">
             <div class="optionsWrapper">
                 <div class="sortWrapper options">
@@ -51,7 +73,7 @@
             <p class="alertInfo">Add your first task!</p>
 
             <ul>
-                <li class="taskContainer" id="taskSample">
+                <!-- <li class="taskContainer" id="taskSample">
                     <div class="date">
                         <span class="deadline">Sun, 28 Aug 2022 17:37</span>
                         <form>
@@ -67,7 +89,7 @@
                             <button class="remove"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
