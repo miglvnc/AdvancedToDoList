@@ -3,6 +3,7 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -21,7 +22,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #f1e7e7;
-  font-family: 'Open Sans', sans-serif;
 }
 
 body .hideDateInput {
@@ -51,13 +51,12 @@ body .hideDateInput {
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.8);
   letter-spacing: 3px;
   padding: 10px 15px;
-  font-size: 28px;
   text-transform: uppercase;
 }
 
 .header .toDoInput, .header .dateInput {
   min-width: 230px;
-  margin: 10px;
+  margin: 20px 10px;
   width: 70%;
   height: 40px;
   font-size: 18px;
@@ -72,7 +71,6 @@ body .hideDateInput {
 }
 
 .header .dateInput {
-  max-width: 250px;
   margin: auto;
 }
 

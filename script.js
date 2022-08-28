@@ -2,8 +2,9 @@ let $idNumber = 0
 
 const mainFunction = () => {
     prepareDOMElements();
+    
     prepareDOMEvents();
-
+    
     btnsDisabledCheck();
     
     dateTimePicker();
@@ -30,6 +31,8 @@ function prepareDOMElements(){
 
     let timer;
 
+    let remaining;
+
     popUpTools = document.querySelector('.popUpEditTask');
     popUpEditSmallDev = document.querySelector('.popUpTools');
 
@@ -41,7 +44,6 @@ function prepareDOMElements(){
 
     $sortByTime = document.querySelector('.sortByTime');
     $sortByName = document.querySelector('.sortByName');
-    $sortByStatus = document.querySelector('.sortByStatus');
     
 }
 
@@ -53,7 +55,8 @@ function prepareDOMEvents(){
     $currentTasksBtn.addEventListener('click', filterCurrent);
     $allTasksBtn.addEventListener('click', removeFilters);
 
-    // $sortByTime.addEventListener()
+    $sortByTime.addEventListener('click', sortByTime)
+    $sortByName.addEventListener('click', sortByName)
 
     // $ulList.addEventListener('click', checkToolsClick)
 };
@@ -63,7 +66,7 @@ function tasksManipulate () {
 };
 
 function filterFinished(){
-    btnsRemoveStyleClass();
+    btnsRemoveStyleClass('filter');
     $finishedTasksBtn.classList.add('btnActive')
     
     let allTasks = $listContainer.querySelectorAll('li');
@@ -92,7 +95,7 @@ function filterFinished(){
 };
 
 function filterCurrent(){
-    btnsRemoveStyleClass();
+    btnsRemoveStyleClass('filter');
     $currentTasksBtn.classList.add('btnActive')
     
     let allTasks = $listContainer.querySelectorAll('li');
@@ -119,7 +122,7 @@ function filterCurrent(){
 };
 
 function removeFilters(){
-    btnsRemoveStyleClass();
+    btnsRemoveStyleClass('filter');
     $allTasksBtn.classList.add('btnActive')
     
     let allTasks = $listContainer.querySelectorAll('li');
@@ -134,11 +137,22 @@ function removeFilters(){
 
 };
 
-function btnsRemoveStyleClass(){
+function btnsRemoveStyleClass(check){
+    if (check === 'filter') {
+        $finishedTasksBtn.classList.remove('btnActive');
+        $currentTasksBtn.classList.remove('btnActive');
+        $allTasksBtn.classList.remove('btnActive');
+    } else if (check === 'sort') {
+        $sortByTime.classList.remove('btnActive');
+        $sortByName.classList.remove('btnActive');
+    }
+};
+
+function sortBtnsRemoveStyleClass(){
     $finishedTasksBtn.classList.remove('btnActive')
     $currentTasksBtn.classList.remove('btnActive')
     $allTasksBtn.classList.remove('btnActive')
-}
+};
 
 function btnsDisabledCheck() {
     let allTasks = $listContainer.querySelectorAll('li')
@@ -157,10 +171,35 @@ function btnsDisabledCheck() {
 
 };
 
+function sortByTime() {
+    btnsRemoveStyleClass('sort')
+    $sortByTime.classList.add('btnActive');
+    let taskList = $listContainer.querySelector('#taskList');
+        [...taskList.children].sort(function (a, b) {
+            if (a.value > b.value) {
+                return 1
+            } else {
+                return -1
+            }
+        })
+        .forEach((node) => taskList.appendChild(node))
+
+};
 function sortByName() {
-    let allTasks = $listContainer.querySelectorAll('li');
-    console.log(allTasks);
-}
+    btnsRemoveStyleClass('sort')
+    $sortByName.classList.add('btnActive');
+    let taskList = $listContainer.querySelector('#taskList');
+        // console.log(a.children[1].children[0].value);
+        [...taskList.children].sort(function (a, b) {
+            if (a.children[1].children[0].value > b.children[1].children[0].value) {
+                return 1
+            } else {
+                return -1
+            }
+        })
+        .forEach((node) => taskList.appendChild(node))
+
+};
 
 
 function alertInfoCheck() {
@@ -293,8 +332,9 @@ function addNewTask () {
         })
 
         filterActiveActionCheck();
-
         btnsDisabledCheck();
+
+        btnsRemoveStyleClass('sort');
         
     } else {
         $alertInfo.innerText = "Type task name and pick deadline!"
@@ -311,7 +351,9 @@ function timeCounter(thisTimeContainer, dateInput) {
     
     timer = setInterval(function() {
         let now = new Date().getTime();
-        let remaining = endDate - now;
+        remaining = endDate - now;
+
+        timeleftContainer.parentElement.parentElement.value = remaining; // for sorting by time purpose, original value of time remaining
     
         if (remaining >= 0 && timeleftContainer.innerHTML !== "Done!") {
             let days = Math.floor(remaining / (1000*60*60*24));

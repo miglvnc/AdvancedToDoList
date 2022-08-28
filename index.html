@@ -13,8 +13,8 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&family=Open+Sans:wght@400;700&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
@@ -27,9 +27,9 @@
         <div class="header">
             <h2>ToDo List</h2>
             <form>
-                <input class="form-control dateInput" type="datetime" name="datetime" id="datetime" placeholder="Deadline of your task">
+                <input class="form-control dateInput" type="datetime" name="datetime" id="datetime" placeholder="Deadline">
             </form>
-            <input class="toDoInput"type="text" placeholder="Type your task">
+            <input class="toDoInput"type="text" placeholder="Type your task here...">
             <button class="addBtn">Add</button>
         </div>
         <div class="taskSampleContainer">
@@ -60,10 +60,9 @@
                     <h4>Sort by:</h4>
                     <button class="sortByTime sortFilterBtn">Time Left</button>
                     <button class="sortByName sortFilterBtn">Name</button>
-                    <button class="sortByStatus sortFilterBtn">Status</button>
                 </div>
                 <div class="filterWrapper options">
-                    <h4>Show tasks:</h4>
+                    <h4>Show:</h4>
                     <button class="showAll sortFilterBtn btnActive">All</button>
                     <button class="onlyDone sortFilterBtn">Finished</button>
                     <button class="onlyActive sortFilterBtn">Current</button>
@@ -72,24 +71,7 @@
             <h2>Your tasks:</h2>
             <p class="alertInfo">Add your first task!</p>
 
-            <ul>
-                <!-- <li class="taskContainer" id="taskSample">
-                    <div class="date">
-                        <span class="deadline">Sun, 28 Aug 2022 17:37</span>
-                        <form>
-                            <input class="form-control dateInput hideDateInput" type="datetime" name="datetime" placeholder="Edit deadline">
-                        </form>
-                        <span class="timeleft">Counting...</span>
-                    </div>
-                    <div class="taskWrapper">
-                        <input type="text" class="task" readonly value="typowe zadanie trzy wyrazy" placeholder="Empty task...">
-                        <div class="tools">
-                            <button class="complete"><i class="fa-solid fa-check"></i></button>
-                            <button class="edit">edit</button>
-                            <button class="remove"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </div>
-                </li> -->
+            <ul id="taskList">
             </ul>
         </div>
     </div>
