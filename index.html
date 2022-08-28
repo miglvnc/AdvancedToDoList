@@ -36,14 +36,15 @@
             <div class="optionsWrapper">
                 <div class="sortWrapper options">
                     <h4>Sort by:</h4>
-                    <button class="sortByTime">Time Left</button>
-                    <button class="sortByName">Name</button>
-                    <button class="sortByStatus">Status</button>
+                    <button class="sortByTime sortFilterBtn">Time Left</button>
+                    <button class="sortByName sortFilterBtn">Name</button>
+                    <button class="sortByStatus sortFilterBtn">Status</button>
                 </div>
                 <div class="filterWrapper options">
-                    <h4>Show only:</h4>
-                    <button class="onlyDone">Finished</button>
-                    <button class="onlyActive">Current</button>
+                    <h4>Show tasks:</h4>
+                    <button class="showAll sortFilterBtn btnActive">All</button>
+                    <button class="onlyDone sortFilterBtn">Finished</button>
+                    <button class="onlyActive sortFilterBtn">Current</button>
                 </div>
             </div>
             <h2>Your tasks:</h2>
@@ -56,7 +57,7 @@
                         <form>
                             <input class="form-control dateInput hideDateInput" type="datetime" name="datetime" placeholder="Edit deadline">
                         </form>
-                        <span class="timeleft">Time left</span>
+                        <span class="timeleft">Counting...</span>
                     </div>
                     <div class="taskWrapper">
                         <input type="text" class="task" readonly value="typowe zadanie trzy wyrazy" placeholder="Empty task...">

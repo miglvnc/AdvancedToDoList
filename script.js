@@ -3,6 +3,8 @@ let $idNumber = 0
 const mainFunction = () => {
     prepareDOMElements();
     prepareDOMEvents();
+
+    btnsDisabledCheck();
     
     dateTimePicker();
 
@@ -31,20 +33,92 @@ function prepareDOMElements(){
 
     popUpTools = document.querySelector('.popUpEditTask');
     popUpEditSmallDev = document.querySelector('.popUpTools');
+
+    sortFilterBtns = document.querySelectorAll('.sortFilterBtn')
+
+    $finishedTasksBtn = document.querySelector('.onlyDone')
+    $currentTasksBtn = document.querySelector('.onlyActive')
+    $allTasksBtn = document.querySelector('.showAll')
     
 }
 
 function prepareDOMEvents(){
-    $addNewTask.addEventListener('click', tasksManipulate)
-    $toDoInput.addEventListener('keyup', enterConfirm)
+    $addNewTask.addEventListener('click', tasksManipulate);
+    $toDoInput.addEventListener('keyup', enterConfirm);
+
+    $finishedTasksBtn.addEventListener('click', filterFinished);
+    $currentTasksBtn.addEventListener('click', filterCurrent);
+    $allTasksBtn.addEventListener('click', removeFilters);
 
     // $ulList.addEventListener('click', checkToolsClick)
 }
 
 function tasksManipulate () {
     addNewTask();
+};
+
+function filterFinished(){
+    btnsRemoveStyleClass();
+    $finishedTasksBtn.classList.add('btnActive')
+    
+    let allTasks = $listContainer.querySelectorAll('li');
+    allTasks.forEach(task => {
+        if (!task.classList.contains('taskDone')) {
+            task.classList.add('taskFinishedFilter')
+        } else if (task.classList.contains('taskDone')) {
+            task.classList.remove('taskFinishedFilter')
+        }
+    });
+};
+
+function filterCurrent(){
+    btnsRemoveStyleClass();
+    $currentTasksBtn.classList.add('btnActive')
+    
+    let allTasks = $listContainer.querySelectorAll('li');
+    allTasks.forEach(task => {
+        if (task.classList.contains('taskDone')) {
+            console.log(task);
+            task.classList.add('taskFinishedFilter')
+        } else if (!task.classList.contains('taskDone')) {
+            task.classList.remove('taskFinishedFilter')
+        }
+    });
+};
+
+function removeFilters(){
+    btnsRemoveStyleClass();
+    $allTasksBtn.classList.add('btnActive')
+    
+    let allTasks = $listContainer.querySelectorAll('li');
+    allTasks.forEach(task => {
+        console.log(task);
+        task.classList.remove('taskFinishedFilter')
+    });
+};
+
+function btnsRemoveStyleClass(){
+    $finishedTasksBtn.classList.remove('btnActive')
+    $currentTasksBtn.classList.remove('btnActive')
+    $allTasksBtn.classList.remove('btnActive')
 }
 
+function btnsDisabledCheck() {
+    let allTasks = $listContainer.querySelectorAll('li')
+    if (allTasks.length <= 1) {
+        sortFilterBtns.forEach(btn=> {
+            btn.setAttribute('disabled', 'disabled')
+            btn.style.cursor = "not-allowed"
+            removeFilters();
+        });
+    } else {
+        sortFilterBtns.forEach(btn=> {
+            btn.removeAttribute('disabled', 'disabled')
+            btn.style.cursor = "pointer"
+        });
+    }
+
+};
 
 function addNewTask () {
     if ($toDoInput.value !== "" && $dateInput.value !== "") {
@@ -107,7 +181,7 @@ function addNewTask () {
             if (taskContainer.querySelector('.timeleft').innerHTML !== "Done!") {
                 taskContainer.querySelector('.timeleft').innerHTML = "Done!";
             } else {
-                taskContainer.querySelector('.timeleft').innerHTML = "Time left";
+                taskContainer.querySelector('.timeleft').innerHTML = "Counting...";
             }
         })
 
@@ -115,6 +189,8 @@ function addNewTask () {
 
             getThisContainers(this);
             taskContainer.remove();
+            btnsDisabledCheck();
+
         })
 
         editBtn.addEventListener('click', function(){
@@ -156,12 +232,14 @@ function addNewTask () {
                 }
             }
         })
+
+        btnsDisabledCheck();
         
     } else {
         $alertInfo.innerText = "Type task name and pick deadline!"
     }
     
-}
+};
 
 function timeCounter(thisTimeContainer, dateInput) {
 
@@ -205,13 +283,13 @@ function timeCounterConditions (timeleftContainer, days, hours, mins, secs) {
     if(days === 0 && hours < 1) {
         timeleftContainer.classList.add('hourLeft')
     }
-}
+};
 
 function enterConfirm() {
     if (event.key === "Enter") {
         addNewTask();
     }
-}
+};
 
 // sort
 

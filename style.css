@@ -36,11 +36,6 @@ body .hideDateInput {
   border-radius: 5px;
 }
 
-.wrapperBlur {
-  -webkit-filter: blur(2px);
-          filter: blur(2px);
-}
-
 .header {
   padding: 40px 30px 50px 30px;
   border-radius: 5px 5px 0 0;
@@ -101,6 +96,9 @@ body .hideDateInput {
 .listContainer {
   padding: 20px;
   margin: 0 0 15px 0;
+  min-height: 100%;
+  -webkit-transition: max-height 0.2s;
+  transition: max-height 0.2s;
 }
 
 .listContainer .optionsWrapper {
@@ -154,6 +152,15 @@ body .hideDateInput {
 }
 
 .listContainer .optionsWrapper .options .btnActive {
+  background-color: #b18989;
+  color: #e7dede;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transform: translate(-2px, -5%);
+          transform: translate(-2px, -5%);
+}
+
+.listContainer .optionsWrapper .options button:active {
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
   -webkit-box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.4);
@@ -208,6 +215,10 @@ body .hideDateInput {
   background-color: #e6f0dc;
 }
 
+.listContainer .taskFinishedFilter {
+  display: none;
+}
+
 .listContainer .date {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -239,16 +250,16 @@ body .hideDateInput {
   padding: 5px 0 5px 5px;
 }
 
+.listContainer .date .hourLeft {
+  color: #e08926;
+}
+
 .listContainer .date .exceeded {
   color: #e21717;
 }
 
 .listContainer .date .taskDoneDate {
   color: #2e923f;
-}
-
-.listContainer .date .hourLeft {
-  color: #e08926;
 }
 
 .listContainer .dateTaskDone {

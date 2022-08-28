@@ -1,5 +1,6 @@
 $light-color: #f1e7e7
 $light-red: #e09b9b
+$darker-color: #b98f8f
 $dark-color: #b18989
 $red-color: #c95f5f
 
@@ -77,6 +78,8 @@ body
 .listContainer
     padding: 20px
     margin: 0 0 15px 0
+    min-height: 100%
+    transition: max-height 0.2s
 
     .optionsWrapper
         display: flex
@@ -110,6 +113,12 @@ body
                 transform: translate(-2px, -5%)
 
             .btnActive
+                background-color: $dark-color
+                color: #e7dede
+                box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4)
+                transform: translate(-2px, -5%)
+
+            button:active
                 transform: translateY(2px)
                 box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.4)
 
@@ -148,6 +157,8 @@ body
     .taskDone
         background-color: #e6f0dc
 
+    .taskFinishedFilter
+        display: none
 
     .date
         display: flex
@@ -170,16 +181,15 @@ body
         .dateInput
             font-size: 16px
             padding: 5px 0 5px 5px
-
+            
+        .hourLeft
+            color: #e08926
 
         .exceeded
             color: #e21717
 
         .taskDoneDate
             color: #2e923f
-
-        .hourLeft
-            color: #e08926
 
     .dateTaskDone
         background-color: #effae3
