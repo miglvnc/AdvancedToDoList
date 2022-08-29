@@ -6,7 +6,7 @@ Application is created for training purpose and to practice dynamic DOM manipula
 
 ## Installation
 
-Project available on [Github Pages](https://miglvnc.github.io/toDoList/).
+Project available on [Github Pages](https://miglvnc.github.io/AdvancedToDoList/).
 
 ## Usage
 
