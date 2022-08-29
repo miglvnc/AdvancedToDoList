@@ -90,7 +90,7 @@ body .hideDateInput {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.header .addBtn:hover {
+.header .addBtn:hover:not([disabled]) {
   background-color: #b18989;
   color: #f1e7e7;
 }
@@ -98,9 +98,6 @@ body .hideDateInput {
 .listContainer {
   padding: 20px;
   margin: 0 0 15px 0;
-  min-height: 100%;
-  -webkit-transition: max-height 0.2s;
-  transition: max-height 0.2s;
 }
 
 .listContainer .optionsWrapper {
@@ -144,7 +141,7 @@ body .hideDateInput {
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
 }
 
-.listContainer .optionsWrapper .options button:hover {
+.listContainer .optionsWrapper .options button:hover:not([disabled]) {
   background-color: #b18989;
   color: #e7dede;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
@@ -162,7 +159,7 @@ body .hideDateInput {
           transform: translate(-2px, -5%);
 }
 
-.listContainer .optionsWrapper .options button:active {
+.listContainer .optionsWrapper .options button:active:not([disabled]) {
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
   -webkit-box-shadow: 3px 1px 3px rgba(0, 0, 0, 0.4);
@@ -181,7 +178,7 @@ body .hideDateInput {
 
 .listContainer ul {
   margin: 0;
-  padding: 0;
+  padding: 5px;
 }
 
 .listContainer li {
@@ -193,6 +190,7 @@ body .hideDateInput {
       -ms-flex-direction: column;
           flex-direction: column;
   list-style: none;
+  height: 100%;
   padding: 10px 15px;
   margin: 20px 0px;
   border-radius: 5px;
@@ -286,9 +284,9 @@ body .hideDateInput {
 }
 
 .listContainer .taskWrapper .task {
-  margin: 10px 2px;
+  margin: 10px 5px;
   padding: 7px;
-  text-align: center;
+  width: 100%;
   font-size: 20px;
   letter-spacing: 1px;
   text-shadow: 2px 2px 2px rgba(143, 143, 143, 0.6);
@@ -312,14 +310,11 @@ body .hideDateInput {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .listContainer .taskWrapper .tools button {
-  padding: 10px;
-  margin: 0 5px;
+  padding: 7px;
+  margin: 0 4px;
   border: none;
   border-radius: 5px;
   text-transform: uppercase;
@@ -331,7 +326,7 @@ body .hideDateInput {
   transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -webkit-transform 0.3s;
 }
 
-.listContainer .taskWrapper .tools button:hover {
+.listContainer .taskWrapper .tools button:hover:not([disabled]) {
   background-color: #e7dede;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
@@ -357,5 +352,106 @@ body .hideDateInput {
 
 .listContainer .taskWrapper .tools .btnHide {
   display: none;
+}
+
+.animateTask {
+  -webkit-animation: prependAnimate 0.5s ease-out;
+          animation: prependAnimate 0.5s ease-out;
+}
+
+.removeTask {
+  -webkit-animation: removeAnimate 0.5s ease-in;
+          animation: removeAnimate 0.5s ease-in;
+}
+
+.fadeInAnimate {
+  -webkit-animation: fadeInAnimate 0.4s, easy-out;
+          animation: fadeInAnimate 0.4s, easy-out;
+}
+
+@-webkit-keyframes prependAnimate {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@keyframes prependAnimate {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes fadeInAnimate {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-5%);
+            transform: translateY(-5%);
+  }
+  100% {
+    opacity: 100;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@keyframes fadeInAnimate {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-5%);
+            transform: translateY(-5%);
+  }
+  100% {
+    opacity: 100;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes removeAnimate {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  20% {
+    -webkit-transform: translateX(3%);
+            transform: translateX(3%);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+
+@keyframes removeAnimate {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  20% {
+    -webkit-transform: translateX(3%);
+            transform: translateX(3%);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
 }
 /*# sourceMappingURL=style.css.map */

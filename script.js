@@ -1,5 +1,3 @@
-let $idNumber = 0
-
 const mainFunction = () => {
     prepareDOMElements();
     
@@ -32,6 +30,8 @@ function prepareDOMElements(){
     let timer;
 
     let remaining;
+
+
 
     popUpTools = document.querySelector('.popUpEditTask');
     popUpEditSmallDev = document.querySelector('.popUpTools');
@@ -176,10 +176,16 @@ function sortByTime() {
     $sortByTime.classList.add('btnActive');
     let taskList = $listContainer.querySelector('#taskList');
         [...taskList.children].sort(function (a, b) {
-            if (a.value > b.value) {
+            if (a.classList.contains('taskDone')) {
                 return 1
-            } else {
+            } else if (b.classList.contains('taskDone')) {
                 return -1
+            } else {
+                if (a.value > b.value) {
+                    return 1
+                } else {
+                    return -1
+                }
             }
         })
         .forEach((node) => taskList.appendChild(node))
@@ -189,8 +195,8 @@ function sortByName() {
     btnsRemoveStyleClass('sort')
     $sortByName.classList.add('btnActive');
     let taskList = $listContainer.querySelector('#taskList');
-        // console.log(a.children[1].children[0].value);
-        [...taskList.children].sort(function (a, b) {
+    // console.log(a.children[0].children[2].innerText = "Exceeded!");
+    [...taskList.children].sort(function (a, b) {
             if (a.children[1].children[0].value > b.children[1].children[0].value) {
                 return 1
             } else {
@@ -211,6 +217,7 @@ function alertInfoCheck() {
     }
 };
 
+let $idNumber = 0; // for new id for task
 
 function addNewTask () {
     if ($toDoInput.value !== "" && $dateInput.value !== "") {
@@ -232,8 +239,9 @@ function addNewTask () {
 
         //time remaining
         timeCounter($newTaskContainer, $dateInput.value);
-
+ 
         //add task to list
+        $newTaskContainer.classList.add('animateTask')
         $ulList.prepend($newTaskContainer);
 
         //clear input
@@ -247,13 +255,11 @@ function addNewTask () {
 
         dateTimePicker();
 
-        deleteForm = $newTaskContainer.querySelectorAll('.dateInput')
+        deleteForm = $newTaskContainer.querySelectorAll('.dateInput');
 
         // dateTimePicker duplicate inputs, so 2 of them is removed.
         deleteForm[2].remove();
         deleteForm[3].remove();
-        
-
         
         completeBtn.addEventListener('click', function(){
 
@@ -266,7 +272,7 @@ function addNewTask () {
             let allBtns = tools.children;
 
             for (i = 0; i < allBtns.length; i++) {
-                allBtns[i].classList.toggle('btnBackground')
+                allBtns[i].classList.toggle('btnBackground');
             }
             
             if (taskContainer.querySelector('.timeleft').innerHTML !== "Done!") {
@@ -281,14 +287,15 @@ function addNewTask () {
         removeBtn.addEventListener('click', function(){
 
             getThisContainers(this);
-            taskContainer.remove();
 
-            btnsDisabledCheck();
+            taskContainer.classList.add('removeTask');
 
-            alertInfoCheck();
-
-            filterActiveActionCheck();
-
+            setTimeout(function(){
+                taskContainer.remove();
+                alertInfoCheck();
+                btnsDisabledCheck();
+                filterActiveActionCheck();
+            }, 450)
         })
 
         editBtn.addEventListener('click', function(){
@@ -296,7 +303,7 @@ function addNewTask () {
             getThisContainers(this);
 
             if(this.innerHTML == "edit") {
-                this.innerHTML = 'save'
+                this.innerHTML = 'save';
                 name.removeAttribute('readonly');
                 name.classList.add('editActive');
                 name.focus();
